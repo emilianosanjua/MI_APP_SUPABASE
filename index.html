@@ -2,19 +2,107 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Inventario FIME</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario FIME - Edgar Herrera</title>
+    
+    <style>
+        /* Estilos Generales para el fondo y la letra */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6; /* Un gris muy claro de fondo */
+            margin: 0;
+            display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center;    /* Centra verticalmente */
+            height: 100vh;          /* Usa todo el alto de la pantalla */
+        }
+
+        /* Estilos para el contenedor principal del Login */
+        #login-form {
+            background-color: #ffffff; /* Blanco para el formulario */
+            padding: 40px;
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Una sombra suave */
+            width: 350px;
+            text-align: center;
+        }
+
+        .login-form{
+            width: 100px;      /* Cambia este número si la quieres más chica o grande */
+            height: auto;      /* Mantiene la proporción */
+            display: block;    /* Permite centrarla */
+            margin: 0 auto 0px auto; /* La centra y le da espacio abajo */
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        /* Estilos para los campos de texto */
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-radius; /* Importante para el padding */
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #3498db; /* Azul al dar clic */
+            outline: none;
+        }
+
+        /* Estilos para los botones */
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease; /* Efecto suave */
+        }
+
+        /* Botón de Entrar (Azul) */
+        button[onclick="iniciarSesion()"] {
+            background-color: #3498db;
+            color: white;
+        }
+
+        button[onclick="iniciarSesion()"]:hover {
+            background-color: #59b929;
+        }
+
+        /* Botón de Registrar (Gris) */
+        button[onclick="registrarUsuario()"] {
+            background-color: #95a5a6;
+            color: white;
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        button[onclick="registrarUsuario()"]:hover {
+            background-color: #7f8c8d;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Gestión de Inventario</h1>
     
-    <div id="formulario">
-        <input type="text" id="nombreProducto" placeholder="Nombre del objeto">
-        <input type="number" id="cantidad" placeholder="Cantidad">
-        <button onclick="agregarAlInventario()">Guardar en Base de Datos</button>
+    <div id="login-form">
+        <img src="empresa.jpg" style="width: 350px !important; height: auto; display: block; margin: 0 auto -100px auto;">
+        <h2>Iniciar Sesión</h2>
+        <input type="email" id="email" placeholder="Tu correo">
+        <input type="password" id="password" placeholder="Tu contraseña">
+        <button onclick="iniciarSesion()">Entrar</button>
+        <button onclick="registrarUsuario()">Registrar</button>
     </div>
-
-    <h2>Lista de Existencias</h2>
-    <ul id="lista-inventario"></ul>
 
     <script type="module" src="app.js"></script>
 </body>
