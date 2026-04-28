@@ -19,6 +19,3 @@ async function obtenerEstudiantes() {
 }
 
 obtenerEstudiantes()
-await supabase
-  .from('estudiantes')
-  .insert([{ nombre: 'Edgar Herrera', carrera: 'ITS' }]);
