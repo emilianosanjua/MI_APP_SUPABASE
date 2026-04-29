@@ -27,12 +27,6 @@
             text-align: center;
         }
 
-        .login-form{
-            width: 100px;      /* Cambia este número si la quieres más chica o grande */
-            height: auto;      /* Mantiene la proporción */
-            display: block;    /* Permite centrarla */
-            margin: 0 auto 0px auto; /* La centra y le da espacio abajo */
-        }
 
         h2 {
             color: #333;
@@ -96,12 +90,18 @@
 <body>
     
     <div id="login-form">
-        <img src="empresa.jpg" style="width: 350px !important; height: auto; display: block; margin: 0 auto -100px auto;">
-        <h2>Iniciar Sesión</h2>
+        <img src="empresa.jpg" style="width: 350px; height: auto; display: block; margin: 0 auto -40px auto;">
+        <h2>Iniciar Sesion</h2>
         <input type="email" id="email" placeholder="Tu correo">
         <input type="password" id="password" placeholder="Tu contraseña">
         <button onclick="iniciarSesion()">Entrar</button>
         <button onclick="registrarUsuario()">Registrar</button>
+        <div id="seccion-estudiantes" style="display:none;">
+            <h3>Registrar Nuevo Estudiante</h3>
+            <input type="text" id="nombreEstudiante" placeholder="Nombre completo">
+            <input type="text" id="carreraEstudiante" placeholder="Carrera (ej. ITS, IAE)">
+            <button onclick="guardarEstudiante()">Agregar a la Tabla</button>
+        </div>
     </div>
 
     <script type="module" src="app.js"></script>

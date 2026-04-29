@@ -1,1 +1,0 @@
-console.log("si funciono este pedo no se como")

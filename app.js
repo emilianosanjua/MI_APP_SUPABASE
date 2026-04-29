@@ -39,14 +39,49 @@ async function iniciarSesion() {
     })
 
     if (error) {
-        alert("Acceso denegado: " + error.message)
+        alert("Error al entrar: " + error.message)
     } else {
         alert("¡Bienvenido al sistema!")
-        // Aquí podrías redirigir a otra página o limpiar el formulario
-        console.log("Usuario logueado:", data.user)
+        
+        // Manipulación del DOM: Mostrar formulario de estudiantes y ocultar login
+        document.getElementById('seccion-estudiantes').style.display = 'block'
+        document.getElementById('email').style.display = 'none'
+        document.getElementById('password').style.display = 'none'
+        
+        // Ocultamos también los encabezados de login para que se vea limpio
+        document.querySelector('h2').innerText = "Panel de Administración"
     }
 }
 
-// 5. Exponemos las funciones para que el HTML pueda verlas
-window.registrarUsuario = registrarUsuario;
-window.iniciarSesion = iniciarSesion;
+// 5. Función para Guardar Estudiante en la Tabla
+async function guardarEstudiante() {
+    const nombre = document.getElementById('nombreEstudiante').value
+    const carrera = document.getElementById('carreraEstudiante').value
+
+    if (!nombre || !carrera) {
+        alert("Por favor, llena todos los campos.")
+        return
+    }
+
+    // Petición INSERT a la base de datos (con RLS desactivada)
+    const { data, error } = await supabase
+        .from('estudiantes')
+        .insert([
+            { nombre: nombre, carrera: carrera }
+        ])
+        .select()
+
+    if (error) {
+        console.error("Error:", error)
+        alert("Error al guardar en la base de datos.")
+    } else {
+        alert("¡Estudiante registrado con éxito!")
+        // Limpiar inputs después del éxito
+        document.getElementById('nombreEstudiante').value = ''
+        document.getElementById('carreraEstudiante').value = ''
+    }
+}
+
+// 4. Exponer funciones al objeto Window (Necesario por usar type="module")
+window.iniciarSesion = iniciarSesion
+window.guardarEstudiante = guardarEstudiante
