@@ -83,5 +83,6 @@ async function guardarEstudiante() {
 }
 
 // 4. Exponer funciones al objeto Window (Necesario por usar type="module")
+window.registrarUsuario = registrarUsuario;
 window.iniciarSesion = iniciarSesion
 window.guardarEstudiante = guardarEstudiante
